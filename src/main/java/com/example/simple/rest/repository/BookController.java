@@ -33,7 +33,10 @@ public class BookController {
         return bookRepository.findById(id)
                 .map(book -> {
                     book.setTitle(newBook.getTitle());
-                    book.setAutor(newBook.getAutor());
+                    book.setAutors(newBook.getAutors());
+                    book.setCena(newBook.getCena());
+                    book.setLiczbaStron(newBook.getLiczbaStron());
+                    book.setRokWydania(newBook.getRokWydania());
                     return bookRepository.save(book);
                 })
                 .orElseGet(() -> {

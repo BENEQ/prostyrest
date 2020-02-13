@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,16 +15,14 @@ import java.util.List;
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id")
-public class Book implements Serializable {
+public class Author implements Serializable {
+
     @Id
-    @GeneratedValue()
+    @GeneratedValue
     private Long id;
-    private String title;
-
-    @ManyToMany(mappedBy = "books")
-    private List<Author> autors;
-    private Integer rokWydania;
-    private Integer liczbaStron;
-    private Double cena;
-
+    private String name;
+    private String surname;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable
+    private List<Book> books;
 }
