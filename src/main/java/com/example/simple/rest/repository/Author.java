@@ -12,9 +12,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Author implements Serializable {
 
     @Id

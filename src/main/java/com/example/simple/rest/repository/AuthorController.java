@@ -47,4 +47,9 @@ public class AuthorController {
     void deleteBooks(@PathVariable Long id) {
         authorRepository.deleteById(id);
     }
+
+    @GetMapping("/authors/{id}/books")
+    List<Book> getBooksAuthor(@PathVariable Long id) {
+        return authorRepository.findById(id).get().getBooks();
+    }
 }
